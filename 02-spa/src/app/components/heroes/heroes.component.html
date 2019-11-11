@@ -1,0 +1,16 @@
+<h1 class="animated fadeIn">Héroes <small> Marvel y DC</small></h1>
+<hr>
+
+<div class="card-columns animated fadeIn fast">
+    <!-- 
+        -> [heroe] : Recoge el valor asignado en atributo homonimo del componente heroe-card. 
+        
+        -> (heroeSeleccionado) : el componente heroe-card emite un evento cuando se invoca a su funcion verHeroe.
+            
+            El componente padre donde se encuentra esta entrada, queda suscrito (de esta forma) al evento 
+            e invoca su funcion verHeroes, la cual a su vez, redirecciona a la ruta de /heroe.
+            La funcion verHeroe recoge y emite un parametro que se obtiene desde la funcion verHeroes del padre.
+    -->
+    <app-heroe-card (heroeSeleccionado)="verHeroes($event)" [heroe]="h" *ngFor="let h of heroes ; let i=index">
+    </app-heroe-card>
+</div>

@@ -1,0 +1,56 @@
+<h1 class="animated fadeIn">{{heroe.nombre | uppercase}} <small>({{heroe.aparicion | date: 'y' }})</small></h1>
+
+<div class="row animated fadeIn fast">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="heroe.img" class="img-fluid img-heroe" [alt]="heroe.nombre">
+
+            <a [routerLink]="['/heroes']" class="btn btn-outline-danger btn-block">Regresar</a>
+
+            <!-- De esta forma tambien esta navengando
+                <a href="./heroes" class="btn btn-outline-danger btn-block">Regresar</a> 
+            -->
+
+        </div>
+        <div class="col-md-8">
+            <h3>{{heroe.nombre}}</h3>
+            <hr>
+            <p>
+                {{heroe.bio}}
+            </p>
+            <div>
+                <!-- con 2 if 
+                <div *ngIf="heroe.casa=='DC'">
+                    <img src="../../../assets/img/dc.jpg" [alt]="heroe.casa">
+                </div>
+                <div *ngIf="heroe.casa=='Marvel'">
+                    <img src="../../../assets/img/marvel.png" [alt]="heroe.casa">
+                </div>
+                -->
+
+                <!-- Estructura if then else
+                <div>
+                    <div>
+                        <ng-container *ngIf="heroe.casa=='DC'; then thenTemplate; else elseTemplate"></ng-container>
+                        <ng-template #thenTemplate>
+                            <img src="../../../assets/img/dc.jpg" [alt]="heroe.casa">
+                        </ng-template>
+                        <ng-template #elseTemplate>
+                            <img src="../../../assets/img/marvel.png" [alt]="heroe.casa">
+                        </ng-template>
+                    </div>
+                </div>
+                -->
+
+                <!-- If else -->
+                <div>
+                    <ng-container *ngIf="heroe.casa=='DC'; else elseTemplate">
+                        <img class="img-logo" src="assets/img/dc.jpg" [alt]="heroe.casa">
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <img class="img-logo" src="assets/img/marvel.png" [alt]="heroe.casa">
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>

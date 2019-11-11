@@ -1,0 +1,17 @@
+<h1 class="animated fadeIn">Héroes encontrados con:<small> {{term}}</small></h1>
+<hr>
+<!-- IF ELSE. Si no existen heroes en la busqueda mostramos una alerta-->
+<ng-container *ngIf="findedHeroes.length > 0; then thenTemplate; else elseTemplate"></ng-container>
+<!-- IF-->
+<ng-template #thenTemplate>
+    <div class="card-columns">
+        <!-- Paso el heroe por parametro al componente de tarjeta -->
+        <app-heroe-card (heroeSeleccionado)="verHeroes($event)" [heroe]="h" *ngFor="let h of findedHeroes; let i=index"></app-heroe-card>
+    </div>
+</ng-template>
+<!-- ELSE-->
+<ng-template #elseTemplate>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>No existen héroes con el término:</strong> "{{term}}". Por favor, introduce otro texto.
+    </div>
+</ng-template>

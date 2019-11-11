@@ -1,0 +1,21 @@
+<div class="card">
+    <!-- Hay 2 formas de acceder a los atributos del componente desde dentro de una etiqueta
+             - src={{heroe.img}} -> metiendo entre llaves dobles el atributo del componente
+             - [alt]="heroe.nombre" -> colocar doble llave al atributo html para indicar a angular que le vamos a dar un valor del componente
+        -->
+    <img src={{heroe.img}} class=" card-img-top " [alt]="heroe.nombre">
+    <div class="card-body ">
+        <h5 class="card-title ">{{heroe.nombre}}</h5>
+        <p class="card-text text-justify">{{heroe.bio | slice:0:100 }}...</p>
+        <p class="card-text "><small class="text-muted ">{{heroe.aparicion}}</small></p>
+
+        <button (click)="verHeroe(heroe.nombre)" type="button " class="btn btn-outline-primary btn-block ">
+                Ver más..
+            </button>
+
+        <!-- routerLink trabaja con rutas relativas. Como en esta pagina se parte de la ruta /heroes 
+                necesitamos indicar con una pleca que queremos retroceder un nivel /heroe 
+            <a [routerLink]="['/heroe', i]" class="btn btn-outline-primary btn-block">Ver más Link...</a>
+            -->
+    </div>
+</div>
