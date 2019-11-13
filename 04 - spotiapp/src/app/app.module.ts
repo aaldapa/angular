@@ -12,6 +12,11 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 // Importar Rutas
 import { ROUTES } from './app.routes';
 import { PaisesComponent } from './components/paises/paises.component';
+import { SpotifyService } from './services/spotify.service';
+import { NoimagePipe } from './pipes/noimage.pipe';
+import { CardsComponent } from './components/cards/cards.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { UrlpipePipe } from './pipes/urlpipe.pipe';
 
 @NgModule({
   declarations: [
@@ -20,14 +25,19 @@ import { PaisesComponent } from './components/paises/paises.component';
     SearchComponent,
     NavbarComponent,
     ArtistaComponent,
-    PaisesComponent
+    PaisesComponent,
+    NoimagePipe,
+    CardsComponent,
+    LoadingComponent,
+    UrlpipePipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot( ROUTES, { useHash: true } )
   ],
-  providers: [],
+  providers:
+      [SpotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,12 @@
-<p>home works!</p>
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+    <h3>
+        Error
+    </h3>
+    <p>{{errormsg}}</p>
+</div>
+
+
+<!-- Cargo en la variable items los valores del newReleases para ser utilizados en el componente cards-->
+<app-cards [items]="newReleases"></app-cards>

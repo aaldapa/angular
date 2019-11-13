@@ -1,1 +1,57 @@
-<p>artista works!</p>
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="!loading" class="row m-5 animated fadeIn">
+    <div class="col-2">
+        <img [src]="artist.images | noimage" alt="artist.name" class="img-thumbnail img-circle">
+    </div>
+    <div class="col">
+        <h3>{{ artist.name }}</h3>
+        <p>
+            <a [href]="artist.external_urls.spotify" target="_blank">
+                Ir  a la página del artista
+            </a>
+        </p>
+    </div>
+
+    <div class="col-4 text-right">
+        <button [routerLink]="['/search']" routerLinkActive="router-link-active" class="btn btn-outline-danger">
+            Regresar
+        </button>
+    </div>
+
+    <div class="row m-5">
+        <div class="col">
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Canción</th>
+                        <th scope="col">Vista previa</th>
+                    </tr>
+                </thead>
+
+                <tbody style="color: blanchedalmond;">
+                    <tr *ngFor="let item of topTracks; let i=index">
+                        <td>
+                            <img [src]="item.album.images | noimage" class="img-thumb " alt="">
+                        </td>
+                        <td>{{item.album.name}}</td>
+                        <td>{{item.name}}</td>
+                        <td>
+                            <!-- De momento dejo el audio html
+                            <audio *ngIf="item.preview_url" [src]="item.preview_url" controls></audio> -->
+                            <!-- No se puede insertar una url directamente, por eso hay que crear un pipe-->
+                            <iframe [src]="item.uri| urlpipe" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media">
+                            </iframe>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

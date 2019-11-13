@@ -1,1 +1,13 @@
-<p>search works!</p>
+<div class="row">
+    <div class="col">
+        <input #term type="text" (keyup)="search(term.value)" class="form-control" placeholder="Buscar artista">
+    </div>
+</div>
+
+<app-loading *ngIf="loading" class="m-5"></app-loading>
+
+<!-- 
+    *ngIf Cuando loading = true, es decir, este buscando, oculta las tarjetas
+    [items] Paso los artistas en la variable items al componente cards 
+-->
+<app-cards *ngIf="!loading" [items]="artists"></app-cards>
