@@ -1,0 +1,7 @@
+<!-- List of Text Items -->
+<ion-list color="dark">
+    <ion-item color="dark" *ngFor="let item of deseosService.listas; let i=index" detail (click)="verLista(item.id)">
+        <ion-label>{{item.titulo}}</ion-label>
+        <ion-note slot="end" color="danger">{{item.items.length}} items</ion-note>
+    </ion-item>
+</ion-list>
