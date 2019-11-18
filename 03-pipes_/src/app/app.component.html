@@ -1,0 +1,341 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img width="40" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+    />
+    <h4> Pipes</h4>
+
+</div>
+
+<div class="container">
+
+    <h4>{{title | titlecase}}: <small>lowercase & uppercase </small> </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 10%">#</th>
+                <th style="width: 20%">Valor real</th>
+                <th style="width: 30%">Pipe utilizado</th>
+                <th style="width: 40%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>{{propiedad}}</td>
+                <td class="font-weight-bold">lowercase</td>
+                <td>{{propiedad | lowercase}}</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>{{propiedad}}</td>
+                <td class="font-weight-bold">uppercase</td>
+                <td>{{propiedad | uppercase}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>{{title | titlecase}}: <small>Slice </small> </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 10%">#</th>
+                <th style="width: 20%">Valor real</th>
+                <th style="width: 30%">Pipe utilizado</th>
+                <th style="width: 40%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>{{propiedad}}</td>
+                <td class="font-weight-bold">slice:3</td>
+                <td>{{propiedad | slice : 3}}</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>{{propiedad}}</td>
+                <td class="font-weight-bold">slice: 0:3</td>
+                <td>{{propiedad | slice: 0:3}}</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>{{arrPropiedad}}</td>
+                <td class="font-weight-bold">slice: 1:5</td>
+                <td>{{arrPropiedad | slice: 1:5}}</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>{{arrPropiedad}}</td>
+                <td class="font-weight-bold">*ngFor="let item of arrPropiedad | slice : 1 : 5"</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let item of arrPropiedad | slice : 1 : 5">{{item}}</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>{{title | titlecase}}: <small>DecimalPipe </small> </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 10%">#</th>
+                <th style="width: 20%">Valor real</th>
+                <th style="width: 30%">Pipe utilizado</th>
+                <th style="width: 40%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>{{PI}}</td>
+                <td class="font-weight-bold">number</td>
+                <td>{{PI | number }}</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>{{PI}}</td>
+                <td class="font-weight-bold">number: '3.0-0'</td>
+                <td>{{PI | number: '3.0-0'}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>{{title | titlecase}}: <small>PercentPipe </small> </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 10%">#</th>
+                <th style="width: 20%">Valor real</th>
+                <th style="width: 30%">Pipe utilizado</th>
+                <th style="width: 40%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>{{numero}}</td>
+                <td class="font-weight-bold">percent</td>
+                <td>{{numero | percent }}</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>{{numero}}</td>
+                <td class="font-weight-bold">percent: '2.2-2'</td>
+                <td>{{numero | percent: '2.2-2'}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>{{title | titlecase}}: <small>CurrencyPipe </small> </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 10%">#</th>
+                <th style="width: 20%">Valor real</th>
+                <th style="width: 30%">Pipe utilizado</th>
+                <th style="width: 40%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>{{salario}}</td>
+                <td class="font-weight-bold">currency</td>
+                <td>{{salario | currency }}</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>{{salario}}</td>
+                <td class="font-weight-bold">currency: 'EUR'</td>
+                <td>{{salario | currency: 'EUR'}}</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>{{salario}}</td>
+                <td class="font-weight-bold">currency:'EUR':'code'</td>
+                <td>{{salario | currency:'EUR':'code'}}</td>
+            </tr>
+            <!-- <tr>
+                <th>4</th>
+                <td>{{salario}}</td>
+                <td class="font-weight-bold">currency:'EUR':'code':'.2-2' :'es'</td>
+                <td>{{salario | currency:'EUR':'symbol-narrow':'.2-2' :'es'}}</td>
+            </tr> -->
+            <tr>
+                <th>5</th>
+                <td>{{salario}}</td>
+                <td class="font-weight-bold">number:'.2-2'</td>
+                <td>{{salario | number:'.2-2'}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>{{title | titlecase}}: <small>JSON </small> </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 10%">#</th>
+                <th style="width: 20%">Valor real</th>
+                <th style="width: 30%">Pipe utilizado</th>
+                <th style="width: 40%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>{{heroe}}</td>
+                <td class="font-weight-bold">json</td>
+                <td>{{heroe | json }}</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>{{heroe}}</td>
+                <td class="font-weight-bold">
+                    &lt;pre&gt; heroe | json &lt;/pre&gt;
+                </td>
+                <td><pre>{{heroe | json}}</pre></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>{{title | titlecase}}: <small>Async </small> </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 10%">#</th>
+                <th style="width: 20%">Valor real</th>
+                <th style="width: 30%">Pipe utilizado</th>
+                <th style="width: 40%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>{{promesa}}</td>
+                <td class="font-weight-bold">json</td>
+                <td>{{ promesaStr | json }}</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>{{promesa}}</td>
+                <td class="font-weight-bold">async</td>
+                <td>
+                    <span class="blink">{{promesa | async }}</span>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <h4>{{title | titlecase}}: <small>DatePipe </small> </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 10%">#</th>
+                <th style="width: 40%">Valor real</th>
+                <th style="width: 20%">Pipe utilizado</th>
+                <th style="width: 30%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>{{fecha}}</td>
+                <td class="font-weight-bold">date</td>
+                <td>{{ fecha | date}}</td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td>{{fecha}}</td>
+                <td class="font-weight-bold">date: 'medium'</td>
+                <td>{{ fecha | date:'medium'}}</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>{{fecha}}</td>
+                <td class="font-weight-bold">date: 'MMMM - dd'</td>
+                <td>{{ fecha | date: 'MMMM - dd'}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <h4>{{title | titlecase}}: <small>Custom Pipe </small> </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 1%">#</th>
+                <th style="width: 40%">Valor real</th>
+                <th style="width: 9%">Pipe utilizado</th>
+                <th style="width: 40%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>{{texto}}</td>
+                <td class="font-weight-bold">capitalizado</td>
+                <td>{{texto | capitalizado}}</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>{{texto}}</td>
+                <td class="font-weight-bold">capitalizado : false</td>
+                <td>{{texto | capitalizado : false}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h4 style="margin-top: 15px;">{{title | titlecase}}: <small>Domseguro </small> </h4>
+    <h5>Youtube <small>video </small></h5>
+    <hr>
+    <iframe width="560" height="315" [src]="video | domseguro : 'https://youtube.com/embed/' " frameborder="0" allowfullscreen></iframe>
+
+    <h4>{{title | titlecase}}: <small>Custom Pipe contrasena </small>
+        <button (click)="encrypting = !encrypting" class="btn btn-outline-primary">
+            <ng-container *ngIf="encrypting; then thenTemplate; else elseTemplate"></ng-container>
+            <ng-template #thenTemplate>
+                Activar
+            </ng-template>
+            <ng-template #elseTemplate>
+                Desactivar
+            </ng-template>
+        </button>
+    </h4>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 10%">#</th>
+                <th style="width: 30%">Valor real</th>
+                <th style="width: 30%">Pipe utilizado</th>
+                <th style="width: 30%">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>
+                    <p>{{propiedad}}</p>
+                    <span>
+                        
+                    </span>
+
+                    <td class="font-weight-bold">contrasena : {{encrypting}}</td>
+                    <td>{{propiedad | contrasena : encrypting}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
