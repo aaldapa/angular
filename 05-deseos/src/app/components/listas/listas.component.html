@@ -1,7 +1,22 @@
 <!-- List of Text Items -->
-<ion-list color="dark">
-    <ion-item color="dark" *ngFor="let item of deseosService.listas; let i=index" detail (click)="verLista(item.id)">
-        <ion-label>{{item.titulo}}</ion-label>
-        <ion-note slot="end" color="danger">{{item.items.length}} items</ion-note>
-    </ion-item>
+<ion-list #listaHtml color="dark">
+    <ion-item-sliding *ngFor="let item of deseosService.listas | filtroCompletado: tabRedireccion; let i=index">
+        <ion-item color="dark" detail (click)="verLista(item.id)">
+            <ion-label>{{item.titulo}}</ion-label>
+            <ion-note slot="end" color="danger">{{item.items.length}} items</ion-note>
+        </ion-item>
+
+        <ion-item-options side="end">
+            <ion-item-option (click)="borrarLista(item)" color="danger">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+
+        <ion-item-options side="start">
+            <ion-item-option (click)="editarLista(item)" color="danger">
+                <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+
+    </ion-item-sliding>
 </ion-list>

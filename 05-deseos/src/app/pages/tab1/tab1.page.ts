@@ -10,9 +10,14 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab1Page {
 
+  tab: string;
+
   constructor( public deseosService: DeseosService,
                private router: Router,
                private alertController: AlertController ) {
+
+    this.tab = 'tab1';
+
   }
 
   // la pablabra async transforma toda la funcion en una promesa
