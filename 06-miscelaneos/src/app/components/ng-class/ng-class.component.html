@@ -1,0 +1,37 @@
+<h3>ngClass</h3>
+
+<div [ngClass]="'alert-info'" class="alert" role="alert">
+    <strong>Well done!</strong> You read this important alert!
+</div>
+
+<div [ngClass]="alerta" class="alert" role="alert">
+    <strong>Well done!</strong> You get alert with the variable class alerta!
+</div>
+
+<button type="button" (click)="alerta='alert-success'" class="btn btn-success m-1">alert-success</button>
+<button type="button" (click)="alerta='alert-danger'" class="btn btn-danger m-1">alert-danger</button>
+
+<h5 [ngClass]="{'text-danger': propiedades.danger , 'text-info': !propiedades.danger, 'm-1':true}">
+    Ejemplo con [ngClass] + object
+</h5>
+
+<button type="button" (click)="propiedades.danger= !propiedades.danger" [ngClass]="{'btn':true, 'btn-danger': !propiedades.danger , 'btn-info': propiedades.danger, 'm-1':true}">
+    Cambiar
+</button>
+
+<br><br>
+
+<h5>
+    <ng-container *ngIf="!cargando; else elseTemplate">
+        Proceso asincrono
+    </ng-container>
+    <ng-template #elseTemplate>
+        Proceso en ejecución...
+    </ng-template>
+</h5>
+
+<button type="button" class="btn btn-primary" (click)="ejecutar()" [disabled]="cargando">
+    <i class="fa " [ngClass]="{'fa-save': !cargando, 'fa-refresh fa-spin disabled': cargando}"> </i> 
+    <span *ngIf="!cargando"> Guardar cambios</span>
+    <span *ngIf="cargando"> Espere por favor</span>
+</button>
