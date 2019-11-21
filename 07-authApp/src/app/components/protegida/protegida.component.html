@@ -1,0 +1,7 @@
+<h1>Perfil de usuario</h1>
+<hr>
+<!--El simbolo $ ndica que es un observable. Cuando la funcion regrese datos, pasará por el pipe asyn
+    que le pasara los datos al alias profile-->
+<pre *ngIf="auth.userProfile$ | async as profile">
+   <code>{{ profile | json }}</code>
+</pre>
