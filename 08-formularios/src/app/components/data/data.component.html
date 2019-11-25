@@ -1,0 +1,195 @@
+<h4>Formularios <small>data</small></h4>
+<hr />
+<form [formGroup]="formulario" (ngSubmit)="guardarCambios()">
+  <div formGroupName="nombreCompleto">
+    <!-- formulario.controls['nombre'] es lo mismo que formulario.get('nombre')
+        [ngClass]="{'has-danger': formulario.get('nombreCompleto.nombre').invalid}"
+        [ngClass]="{'has-danger':formulario.controls['nombreCompleto'].controls[nombre].valid"
+    -->
+    <div
+      class="form-group row"
+      [ngClass]="{
+        'has-danger': formulario.get('nombreCompleto.nombre').invalid
+      }"
+    >
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nombre"
+          formControlName="nombre"
+        />
+
+        <!-- La ? sirve para decir que se evalue la siguiente condicion (.required) solo si no es null-->
+        <div
+          *ngIf="formulario.get('nombreCompleto.nombre').errors?.required"
+          class="form-control-feedback"
+        >
+          Este campo es obligatorio
+        </div>
+
+        <div
+          *ngIf="formulario.get('nombreCompleto.nombre').errors?.minlength"
+          class="form-control-feedback"
+        >
+          Este campo debe tener una longuitud minima de
+          {{
+            formulario.get("nombreCompleto.nombre").errors.minlength
+              .requiredLength
+          }}
+          caracteres
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row"
+    [ngClass]="{
+                'has-danger': formulario.get('nombreCompleto.apellido').invalid
+                && formulario.get('nombreCompleto.apellido').touched
+             }">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Apellido"
+          formControlName="apellido"
+        />
+        <div
+          *ngIf="formulario.get('nombreCompleto.apellido').errors?.comienzoApellido"
+          class="form-control-feedback"
+        >
+          El apellido no puede empezar por la letra 'c'
+        </div>
+
+        <div
+          *ngIf="formulario.get('nombreCompleto.apellido').errors?.required"
+          class="form-control-feedback"
+        >
+          Este campo es obligatorio
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+      <input
+        formControlName="email"
+        class="form-control"
+        type="email"
+        placeholder="Correo electrónico"
+      />
+    </div>
+    <!-- La ? sirve para decir que se evalue la siguiente condicion (.required) solo si no es null-->
+    <div
+      *ngIf="formulario.get('email').errors?.pattern"
+      class="form-control-feedback"
+      [ngClass]="{
+        'has-danger': formulario.get('nombreCompleto.nombre').invalid
+      }"
+    >
+      El correo no cumple con el formato de email.
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Username</label>
+    <div class="col-8">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Alias / username"
+        formControlName="username"
+      />
+    </div>
+  </div>
+
+  <div class="form-group row"
+    [ngClass]="{'has-danger': (formulario.get('password1').invalid || formulario.get('password2').invalid)
+                 && (formulario.get('password1').touched && formulario.get('password1').touched)}"
+  >
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col-md-4">
+      <input
+        formControlName="password1"
+        class="form-control"
+        type="password"
+        placeholder="Password"
+      />
+        <div
+          *ngIf="(formulario.get('password1').errors?.required || formulario.get('password2').errors?.required)"
+          class="form-control-feedback"
+        >
+          Estos campos son requeridos
+        </div>
+
+        <div
+          *ngIf="!formulario.get('password1').errors?.required && !formulario.get('password2').errors?.required && formulario.get('password2').errors?.passwordNoIguales"
+          class="form-control-feedback"
+        >
+          La passwords no coinciden
+        </div>
+    </div>
+    <div class="col-md-4">
+      <input
+        formControlName="password2"
+        class="form-control"
+        type="password"
+        placeholder="Repite Password"
+      />
+    </div>
+
+    
+
+  </div> 
+  
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pasatiempos</label>
+    <div class="col-md-8" formArrayName="pasatiempos" >
+      <input *ngFor="let item of formulario.get('pasatiempos').controls; let i=index" 
+              [formControlName]="i" 
+              type="text" 
+              class="form-control">
+    </div>
+    <div class="col-md-1">
+      <button type="button" (click)="agregarPasatiempo()" class="btn btn-primary ">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+    <div class="col-md-1">
+        <button type="button" (click)="eliminarPasatiempo()" class="btn btn-primary ">
+          <i class="fa fa-minus"></i>
+        </button>
+      </div>
+  </div>
+  
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+      <button
+        (click)="resetear()"
+        type="button"
+        class="btn btn-outline-primary button-separate"
+      >
+        Resetear
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <span>formulario valido :</span>
+    <span [ngClass]="{ 'text-danger': formulario.invalid }">{{
+      formulario.valid
+    }}</span>
+    <br>
+    <span >Estatus: {{formulario.status}}</span>
+  </div>
+</form>
