@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 class="animated fadeIn">{{pelicula.title}}</h1> 
+
+    <div class="row animated fadeIn fast">
+        
+            <div class="col-md-4">
+                <img [src]="pelicula.posterPath | imagen: 300" class="img-fluid img-heroe" [alt]="pelicula.posterPath">
+            </div>
+
+            <div class="col-md-7">
+                <h3>Sinopsis</h3>
+                <hr>
+                <p class="text-justify" *ngIf="pelicula.overview">{{pelicula.overview}}</p>
+                <p class="text-justify" *ngIf="!pelicula.overview">Sin información</p>
+                <div>
+                    Estreno: 
+                    <span class="font-weight-bold"> {{fechaEstreno |  date: 'EEEE, MMMM d \'de\' y' }}</span></div>
+                <div>
+                    Popularidad: 
+                    <span *ngIf="pelicula.popularity" class="badge badge-primary">{{pelicula.popularity/10 | number:'.0-0'}} / 10</span>
+                    <span *ngIf="!pelicula.popularity" class="badge badge-danger">Sin información</span> 
+                </div>
+                <div >
+                    Voto promedio:
+                    <span *ngIf="pelicula.voteAverage" class="badge badge-primary">{{pelicula.voteAverage | number:'.1-1'}} </span> 
+                    <span *ngIf="!pelicula.voteAverage" class="badge badge-danger">Sin información</span> 
+                </div>
+                
+                <br>
+                <div class="">
+                        <a [routerLink]="[urlReturn]" class="btn btn-outline-danger btn-block">Regresar</a>
+                </div>
+                
+            
+            </div>
+        
+    </div>
+</div>
+
+

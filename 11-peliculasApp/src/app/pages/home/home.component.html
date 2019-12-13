@@ -1,0 +1,40 @@
+<main role="main">
+
+    <section class="jumbotron text-center text-white">
+        <div class="container">
+        <h1>Aplicacíon PeliculasApp</h1>
+        <p class="lead text-white " style="background-color: #343a40;">
+            Esta es una aplicación de búsqueda de películas que se apoya en el API
+            de: <a href="https://www.themoviedb.org/settings/api">https://www.themoviedb.org/settings/api</a>
+        </p>
+    
+        </div>
+    </section>
+</main>
+
+<div class="container">
+    <!-- <h2>Peliculas en cartelera</h2>
+    <hr>
+    <div class="card-columns animated fadeIn fast">
+        <app-pelicula-card [pelicula]="item" *ngFor="let item of peliculasEnCartelera; let i=index"></app-pelicula-card>
+    </div>
+    
+    <h2>Populares</h2>
+    <hr>
+    <div class="card-columns animated fadeIn fast">
+        <app-pelicula-card [pelicula]="item" *ngFor="let item of peliculasPopulares; let i=index"></app-pelicula-card>
+    </div>
+      
+    <h2>Populares entre los más pequeños</h2>
+    <hr>
+    <div class="card-columns animated fadeIn fast">
+        <app-pelicula-card [pelicula]="item" *ngFor="let item of peliculasPopularesPeques; let i=index"></app-pelicula-card>        
+    </div> -->
+
+
+    <app-galeria class="fadeIn animated slower" title="Cartelera" [peliculas]="peliculasEnCartelera | slice: 0 : 6 "></app-galeria>
+    <app-galeria title="Más populares..." [peliculas]="peliculasPopulares | slice: 0 : 6"></app-galeria>
+    <app-galeria title="Para los peques..." [peliculas]="peliculasPopularesPeques | slice: 0 : 6"></app-galeria>
+
+
+</div>

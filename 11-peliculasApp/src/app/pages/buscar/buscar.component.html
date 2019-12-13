@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<div class="container">
+    <br/>
+	<div class="row justify-content-center mt-5 mb-5">
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-auto">
+                        <i class="fas fa-search h4 text-body"></i>
+                    </div>
+                    <!--end of col-->
+                    <div class="col">
+                       <!-- <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Buscar películas"
+                            #inputBusqueda    
+                            [(value)]="terminoBusqueda"
+                            (keyup.enter)="enrutar(inputBusqueda.value)"
+                        > -->
+                       
+                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Buscar películas"
+                            name = 'terminoBusqueda'
+                            [(ngModel)] = "terminoBusqueda"
+                            (keyup.enter)="enrutar(terminoBusqueda)"
+                        >
+                    </div>
+                    <!--end of col-->
+                    <div class="col-auto">
+                        <!-- <button class="btn btn-lg btn-success" type="button"
+                         (click)="enrutar(inputBusqueda.value)" >Buscar</button> -->
+                         <div class="col-auto">
+                            <button class="btn btn-lg btn-success" type="button"
+                                (click)="enrutar(terminoBusqueda)" >Buscar</button>
+                        </div>
+                         
+                    </div>
+                    <!--end of col-->
+                </div>
+            </div>
+        </div>
+        <!--end of col-->
+    </div>
+    
+    <app-loading *ngIf="loading" ></app-loading>
+    <div *ngIf="peliculas !== undefined && peliculas.length > 0;" class="container">
+        <h2>Películas encontradas...</h2>
+        <hr>
+        <br>
+        <div class="card-columns animated fadeIn fast">
+            <app-pelicula-card [pelicula]="item" *ngFor="let item of peliculas; let i=index"></app-pelicula-card>
+        </div>    
+    </div> 
+    
+
+    <!-- <div class="alert alert-warning" role="alert"
+        *ngIf="inputBusqueda.value!=='' && !loading && peliculas.length == 0;"> -->
+
+    <div class="alert alert-warning" role="alert"
+        *ngIf="!loading && peliculas !== undefined && peliculas.length == 0">
+
+        <h4 class="alert-heading">No existen coincidencias!</h4>
+        <p>Por favor, prueba a introducir otro criterio de búsqueda.</p>
+    </div>
+
+</div>
+
+

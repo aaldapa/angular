@@ -1,0 +1,65 @@
+<h2 class="mt-lg-5 fadeIn animated slower" >{{title}}</h2>
+<hr>
+
+<div class="row fadeIn animated slower" *ngIf="peliculas" style ="cursor: pointer;">
+
+    <div class="col-sm-6" >
+
+        <div class="row">
+            <div class="col-md-12 div-pic-1"  [routerLink]="['/pelicula', peliculas[0].id]" [title] ="peliculas[0].title"
+                [ngStyle]="{ 'background-image': 'url( '+ (peliculas[0].backdropPath | imagen : 300) + ')' }">
+
+                <p class="pic-titulo">
+                    {{peliculas[0].title}}
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 div-pic-2"  [routerLink]="['/pelicula', peliculas[1].id]" [title] ="peliculas[1].title"
+                [ngStyle]="{ 'background-image': 'url( '+ (peliculas[1].backdropPath | imagen : 300) + ')' }">
+                
+                <p class="pic-titulo">
+                    {{peliculas[1].title}}
+                </p>
+            </div>
+            <div class="col-sm-6 div-pic-2"  [routerLink]="['/pelicula', peliculas[2].id]" [title] ="peliculas[2].title"
+                [ngStyle]="{ 'background-image': 'url( '+ (peliculas[2].backdropPath | imagen : 300) + ')' }">
+                
+                <p class="pic-titulo">
+                    {{peliculas[2].title}}
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-6 div-pic-2"  [routerLink]="['/pelicula', peliculas[3].id]" [title] ="peliculas[3].title"
+                [ngStyle]="{ 'background-image': 'url( '+ (peliculas[3].backdropPath | imagen : 300) + ')' }">
+                
+                <p class="pic-titulo">
+                    {{peliculas[3].title}}
+                </p>
+            </div>
+            <div class="col-sm-6 div-pic-2"  [routerLink]="['/pelicula', peliculas[4].id]" [title] ="peliculas[4].title"
+                [ngStyle]="{ 'background-image': 'url( '+ (peliculas[4].backdropPath | imagen : 300) + ')' }">
+
+                <p class="pic-titulo">
+                    {{peliculas[4].title}}
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 div-pic-1"  [routerLink]="['/pelicula', peliculas[5].id]" [title] ="peliculas[5].title"
+                [ngStyle]="{ 'background-image': 'url( '+ (peliculas[5].backdropPath | imagen : 300) + ')' }">
+            
+                <p class="pic-titulo">
+                    {{peliculas[5].title}}
+                </p>
+            </div>
+        </div>
+    
+</div>
