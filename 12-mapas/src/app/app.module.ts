@@ -30,7 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDko4R427ou1cXsrk6cd4E0_-gdcYUQOuY'
+      apiKey: ''
     })
   ],
   schemas: [
