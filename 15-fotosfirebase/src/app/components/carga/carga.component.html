@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-4">
+        <h3>Seleccione archivos</h3>
+        <!-- 
+            - Cuando estaSobreElemento es true se activa la clase file-over
+            - appNgDropFiles es la directiva que hemos creado que se aplica sobre el elemento html
+            - Escucha el evento que emita mouseSobre
+            - [archivos]="archivos" -> Asi se igualan los archivos del [ng-drop-files.directive] = [carga.component]
+
+         -->
+        <div appNgDropFiles 
+                [archivos]="archivos" 
+                (mouseSobre) = "estaSobreElemento =$event" [ngClass]="{'file-over': estaSobreElemento}" class="well drop-zone file-over">
+
+            <h4>Deje caer aqui los archivos</h4>
+            <img src="assets/drop-images.png" alt="">
+
+        </div>
+    </div>
+    <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        
+        <button (click)="cargarImagenes()" [disabled]="archivos.length === 0" class="btn btn-success">Cargar a Firebase</button>
+        <button (click)="limpiarArchivos()" class="btn btn-danger ml-1">Limpiar</button>
+        
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of archivos; let i=index">
+                    <td [ngClass]="{'text-green': item.progreso >= 100}">{{ item.nombreArchivo }}</td>
+                    <td>{{ item.archivo.size / 1024 / 1024  | number: '.2-2' }} MB</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progreso + '%'}"></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
