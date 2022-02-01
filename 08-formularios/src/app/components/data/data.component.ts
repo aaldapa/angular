@@ -79,7 +79,7 @@ export class DataComponent {
     // Se puede settear tambien los validadores
     this.formulario.controls.password2.setValidators([
                                                         Validators.required
-                                                        // Para decirle que this es el formulario se utiliza bind
+                                                        // Para decirle que this es el formulario, se utiliza bind
                                                         , this.validacionNoIgual.bind(this.formulario)
                                                       ]);
 
